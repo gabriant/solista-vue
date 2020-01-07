@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css?family=Work+Sans');
+
+$colorPrimary: #8186d5;
+$colorSecondary: #c6cbef;
+$colorAccentDark: #494ca2;
+$colorAccentLight: #e3e7f1;
+$footerHeight: 5rem;
+
+body
+  background-color: $colorAccentDark;
+  color: $colorAccentDark;
+  // font-family: 'Montserrat', sans-serif;
+  font-family: 'Work Sans', sans-serif;
+  height: 100%;
+
+//---------------------------------------------------
+
+#app
+  min-height: 100vh;
+  position: relative;
+  // width: 100vw;
+  // margin: 0;
+
+#app-footer
+  color: $colorPrimary;
+  padding: 2rem 0;
+  position: absolute;
+  width: 100%;
+  bottom: 0
+  height: $footerHeight;
+  text-align: center;
+  // line-height: 10rem;
+  // vertical-align: center;
+
+#app-navbar
+  color: $colorPrimary;
+  min-height: 100px;
+  a
+    color: inherit;
+    &:hover
+      color: $colorSecondary;
+  .navbar-brand
+    // font-family: 'Work Sans', sans-serif;
+    font-weight: 900;
+
+#app-content
+  color: $colorAccentDark !important;
+  padding-bottom: $footerHeight;
+  border-radius: .5rem;
+  .card-title
+    font-weight: 600;
+  .card-description
+    color: $colorPrimary;
+  // min-height: 100%;
+// #content
+//   input
+//     font-size: 2rem;
+//   input:hover, textarea:hover
+//     border-left: 2px solid blue
+//   input, textarea
+//     border: none;
+//     padding: 1rem;
+
+//-------------------------------------------------------
+
+// .save-slot
+//   border: 2px solid white;
+//   border-style: dashed;
+//   border-radius: .5rem;
+//   padding: 1rem;
+// .save-slot.add
+//   border-style: dashed;

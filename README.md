@@ -1,4 +1,6 @@
-# lilista-vue
+# Lilista with Vue.js
+
+Just a project to learn some things. Made with Vue.
 
 ## Project setup
 ```
