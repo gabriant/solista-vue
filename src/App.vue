@@ -11,28 +11,33 @@
           </div>
           <div class="mt-5">
             <ul class="list-group">
-              <li class="list-group-item">Cras justo odio</li>
-              <li class="list-group-item">Dapibus ac facilisis in</li>
-              <li class="list-group-item">Morbi leo risus</li>
-              <li class="list-group-item">Porta ac consectetur ac</li>
-              <li class="list-group-item">Vestibulum at eros</li>
-              <li class="list-group-item">Cras justo odio</li>
-              <li class="list-group-item">Dapibus ac facilisis in</li>
-              <li class="list-group-item">Morbi leo risus</li>
-              <li class="list-group-item">Porta ac consectetur ac</li>
-              <li class="list-group-item">Vestibulum at eros</li>
-              <li class="list-group-item">Cras justo odio</li>
-              <li class="list-group-item">Dapibus ac facilisis in</li>
-              <li class="list-group-item">Morbi leo risus</li>
-              <li class="list-group-item">Porta ac consectetur ac</li>
-              <li class="list-group-item">Vestibulum at eros</li>
-              <li class="list-group-item">Cras justo odio</li>
-              <li class="list-group-item">Dapibus ac facilisis in</li>
-              <li class="list-group-item">Morbi leo risus</li>
-              <li class="list-group-item">Porta ac consectetur ac</li>
-              <li class="list-group-item">Vestibulum at eros</li>
+              <li
+                v-for="(item, idx) in list.items"
+                :key="idx"
+                class="list-group-item"
+                :class="{ 'list-group-item-info': item.done }"
+              >
+                <input v-model="item.done" type="checkbox">
+              <span class="ml-4">{{ item.content }}</span></li>
             </ul>
           </div>
+
+          <div class="input-group mt-3">
+            <div class="input-group-prepend">
+              <button
+                @click.prevent="doAddItem()"
+                class="btn btn-outline-secondary"
+              >+</button>
+            </div>
+            <input
+              v-model="newitem"
+              @keyup.enter="doAddItem()"
+              type="text"
+              class="form-control"
+              placeholder=""
+            >
+          </div>
+
         </div>
       </div>
     </div>
@@ -46,6 +51,7 @@
 import Vue from 'vue'
 import TheFooter from './components/TheFooter'
 import TheNavbar from './components/TheNavbar'
+import defaultList from './default-list.json'
 
 export default Vue.extend({
   name: 'app',
@@ -54,28 +60,41 @@ export default Vue.extend({
   },
 
   data () { return {
-    item: null,
-    items: [
-      { name: 'Cras justo odio', done: false },
-      { name: 'Dapibus ac facilisis in', done: false },
-      { name: 'Morbi leo risus', done: true },
-      { name: 'Porta ac consectetur ac', done: false },
-      { name: 'Vestibulum at eros', done: false }
-    ]
+    newitem: null,
+    list: null
   }},
+
+  created () {
+    this.checkIfListExists()
+    this.list = this.doGetList()
+  },
+
+  updated () {
+    this.doSaveList(this.list)
+  },
 
   methods: {
     doAddItem () {
-      this.items.push({
-        name: this.item,
+      this.list.items.push({
+        content: this.newitem,
         done: false
       })
-      this.item = null
+      console.log(this.newitem);
+      this.newitem = null
     },
 
     doClear () {
-      this.items.forEach(el => el.done = false)
+      this.list.items.forEach(el => el.done = false)
     },
+
+    checkIfListExists () {
+      let exists = this.doGetList()
+      if (!exists.title)
+        this.doSaveList(defaultList)
+    },
+
+    doGetList:() => JSON.parse(localStorage.getItem('solistalist')),
+    doSaveList: (json) => localStorage.setItem('solistalist', JSON.stringify(json))
   }
 
 });
