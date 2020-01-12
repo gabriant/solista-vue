@@ -53,6 +53,8 @@ import TheFooter from './components/TheFooter'
 import TheNavbar from './components/TheNavbar'
 import defaultList from './default-list.json'
 
+const STORAGE_ATTRIBUTE = 'solistalist'
+
 export default Vue.extend({
   name: 'app',
   components: {
@@ -65,8 +67,7 @@ export default Vue.extend({
   }},
 
   created () {
-    this.checkIfListExists()
-    this.list = this.doGetList()
+    this.doInitList()
   },
 
   updated () {
@@ -87,14 +88,17 @@ export default Vue.extend({
       this.list.items.forEach(el => el.done = false)
     },
 
-    checkIfListExists () {
+    doInitList () {
       let exists = this.doGetList()
-      if (!exists.title)
-        this.doSaveList(defaultList)
+      if (!exists || !exists.title) {
+        exists = defaultList
+        this.doSaveList(exists)
+      }
+      this.list = exists
     },
 
-    doGetList:() => JSON.parse(localStorage.getItem('solistalist')),
-    doSaveList: (json) => localStorage.setItem('solistalist', JSON.stringify(json))
+    doGetList:() => JSON.parse(localStorage.getItem(STORAGE_ATTRIBUTE)),
+    doSaveList: (json) => localStorage.setItem(STORAGE_ATTRIBUTE, JSON.stringify(json))
   }
 
 });
