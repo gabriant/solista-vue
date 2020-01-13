@@ -5,9 +5,22 @@
     <div id="app-content">
       <div class="card">
         <div class="card-body p-5">
-          <h2 class="card-title">{{ list.title }}</h2>
-          <div class="card-description">{{ list.description }}</div>
-          <div class="mt-5">
+
+          <input
+            v-model="list.title"
+            type="text"
+            maxlength="50"
+            class="form-control custom-input card-title"
+          >
+
+          <textarea
+            v-model="list.description"
+            maxlength="200"
+            rows="2"
+            class="form-control custom-input card-description"
+          ></textarea>
+
+          <div class="mt-3">
             <ul class="list-group">
               <li
                 v-for="(item, idx) in list.items"

@@ -45,13 +45,17 @@ body
     font-weight: 900;
 
 #app-content
-  color: $colorAccentDark !important;
   padding-bottom: $footerHeight;
   border-radius: .5rem;
   .card-title
+    margin: 0;
+    color: $colorAccentDark;
+    font-size: 2rem;
     font-weight: 600;
+    height: 3.5rem;
   .card-description
     color: $colorPrimary;
+    margin-top: .5rem;
   // min-height: 100%;
 // #content
 //   input
@@ -63,6 +67,18 @@ body
 //     padding: 1rem;
 
 //-------------------------------------------------------
+.custom-input
+  border: none;
+  border-radius: 0;
+  padding: 0.5rem;
+  &:focus
+    background: $colorAccentLight;
+  &:hover, &:focus
+    box-shadow: none;
+    border-bottom: 1px solid #ced4da;
+
+.list-group-item
+  border: 1px solid $colorAccentLight;
 
 // .save-slot
 //   border: 2px solid white;
