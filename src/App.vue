@@ -9,7 +9,7 @@
           <input
             v-model="list.title"
             type="text"
-            maxlength="50"
+            maxlength="60"
             class="form-control custom-input card-title"
           >
 

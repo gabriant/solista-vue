@@ -56,15 +56,8 @@ body
   .card-description
     color: $colorPrimary;
     margin-top: .5rem;
-  // min-height: 100%;
-// #content
-//   input
-//     font-size: 2rem;
-//   input:hover, textarea:hover
-//     border-left: 2px solid blue
-//   input, textarea
-//     border: none;
-//     padding: 1rem;
+  .card-body
+    box-shadow: 0 8px 8px rgba(0,0,0,0.15);
 
 //-------------------------------------------------------
 .custom-input
@@ -73,12 +66,14 @@ body
   padding: 0.5rem;
   &:focus
     background: $colorAccentLight;
-  &:hover, &:focus
     box-shadow: none;
-    border-bottom: 1px solid #ced4da;
+  &:hover, &:focus
+    border-left: 2px solid $colorSecondary;
 
 .list-group-item
   border: 1px solid $colorAccentLight;
+  &:hover
+    background: $colorAccentLight;
 
 // .save-slot
 //   border: 2px solid white;
