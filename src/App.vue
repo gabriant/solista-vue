@@ -5,10 +5,8 @@
     <div id="app-content">
       <div class="card">
         <div class="card-body p-5">
-          <h2 class="card-title">Donec nec justo eget felis facilisis fermentum.</h2>
-          <div class="card-description">
-            Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat.
-          </div>
+          <h2 class="card-title">{{ list.title }}</h2>
+          <div class="card-description">{{ list.description }}</div>
           <div class="mt-5">
             <ul class="list-group">
               <li
